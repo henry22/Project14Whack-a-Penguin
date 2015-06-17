@@ -25,7 +25,8 @@ class WhackSlot: SKNode {
         //putting it to the front of other nodes
         cropNode.zPosition = 1
         //stop the crop node from doing anything
-        cropNode.maskNode = nil
+        cropNode.maskNode = SKSpriteNode(imageNamed: "whackMask")
+        
         charNode = SKSpriteNode(imageNamed: "penguinGood")
         charNode.position = CGPoint(x: 0, y: -90)
         charNode.name = "character"
