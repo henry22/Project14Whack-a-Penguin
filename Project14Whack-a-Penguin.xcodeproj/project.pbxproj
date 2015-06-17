@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA08B4CA1B3194F900A45764 /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08B4C91B3194F900A45764 /* WhackSlot.swift */; };
 		BA2EE1F91B318834009E506B /* gameOver.png in Resources */ = {isa = PBXBuildFile; fileRef = BA2EE1EB1B318834009E506B /* gameOver.png */; };
 		BA2EE1FA1B318834009E506B /* gameOver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA2EE1EC1B318834009E506B /* gameOver@2x.png */; };
 		BA2EE1FB1B318834009E506B /* penguinEvil.png in Resources */ = {isa = PBXBuildFile; fileRef = BA2EE1ED1B318834009E506B /* penguinEvil.png */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA08B4C91B3194F900A45764 /* WhackSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 		BA2EE1EB1B318834009E506B /* gameOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOver.png; sourceTree = "<group>"; };
 		BA2EE1EC1B318834009E506B /* gameOver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameOver@2x.png"; sourceTree = "<group>"; };
 		BA2EE1ED1B318834009E506B /* penguinEvil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinEvil.png; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				BADCBA741B313D9F002FB218 /* Main.storyboard */,
 				BA2EE2081B318845009E506B /* Helper.swift */,
 				BA2EE2071B318845009E506B /* Array+Shuffling.swift */,
+				BA08B4C91B3194F900A45764 /* WhackSlot.swift */,
 				BA2EE1EA1B318834009E506B /* Content */,
 				BADCBA6A1B313D9F002FB218 /* Supporting Files */,
 			);
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA08B4CA1B3194F900A45764 /* WhackSlot.swift in Sources */,
 				BA2EE2091B318845009E506B /* Array+Shuffling.swift in Sources */,
 				BADCBA711B313D9F002FB218 /* GameScene.swift in Sources */,
 				BA2EE20A1B318845009E506B /* Helper.swift in Sources */,
