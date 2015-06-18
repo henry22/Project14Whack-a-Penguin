@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var popupTime = 0.85
+    
     var slots = [WhackSlot]()
     
     var gameScore: SKLabelNode!
@@ -43,6 +45,34 @@ class GameScene: SKScene {
         for i in 0 ..< 4 { createSlotAt(CGPoint(x: 180 + (i * 170), y: 320)) }
         for i in 0 ..< 5 { createSlotAt(CGPoint(x: 100 + (i * 170), y: 230)) }
         for i in 0 ..< 4 { createSlotAt(CGPoint(x: 180 + (i * 170), y: 140)) }
+
+        runAfterDelay(1) { [unowned self] in
+            self.createEnemy()
+        }
+    }
+    
+    func createEnemy() {
+        //Decrease popupTime each time it's called
+        popupTime *= 0.991
+        
+        //Shuffle the list of available slots
+        slots.shuffle()
+        //Make the first slot show itself
+        slots[0].show(hideTime: popupTime)
+        
+        //Generate four random numbers to see if more slots should be shown
+        if RandomInt(min: 0, max: 12) > 4 { slots[1].show(hideTime: popupTime) }
+        if RandomInt(min: 0, max: 12) > 8 { slots[2].show(hideTime: popupTime) }
+        if RandomInt(min: 0, max: 12) > 10 { slots[3].show(hideTime: popupTime) }
+        if RandomInt(min: 0, max: 12) > 11 { slots[4].show(hideTime: popupTime) }
+        
+        let minDelay = popupTime / 2.0
+        let maxDelay = popupTime * 2
+        
+        //Call itself again after a random delay
+        runAfterDelay(RandomDouble(min: minDelay, max: maxDelay)) { [unowned self] in
+            self.createEnemy()
+        }
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

@@ -38,4 +38,32 @@ class WhackSlot: SKNode {
         //the crop node added to the slot
         addChild(cropNode)
     }
+    
+    func show(#hideTime: Double) {
+        if visible { return }
+        
+        charNode.runAction(SKAction.moveByX(0, y: 80, duration: 0.05))
+        visible = true
+        isHit = false
+        
+        if RandomInt(min: 0, max: 2) == 0 {
+            charNode.texture = SKTexture(imageNamed: "penguinGood")
+            charNode.name = "charFriend"
+        } else {
+            charNode.texture = SKTexture(imageNamed: "penguinEvil")
+            charNode.name = "charEnemy"
+        }
+        
+        runAfterDelay(hideTime * 3.5) { [unowned self] in
+            self.hide()
+        }
+    }
+    
+    //the penguin moves back down the screen into its hole
+    func hide() {
+        if !visible { return }
+        
+        charNode.runAction(SKAction.moveByX(0, y: -80, duration: 0.05))
+        visible = false
+    }
 }
