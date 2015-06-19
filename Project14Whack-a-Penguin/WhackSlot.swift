@@ -66,4 +66,16 @@ class WhackSlot: SKNode {
         charNode.runAction(SKAction.moveByX(0, y: -80, duration: 0.05))
         visible = false
     }
+    
+    func hit() {
+        isHit = true
+        
+        //creates an action that waits for a period of time, measured in seconds
+        let delay = SKAction.waitForDuration(0.25)
+        let hide = SKAction.moveByX(0, y: -80, duration: 0.5)
+        //run any code we want, provided as a closure
+        let notVisible = SKAction.runBlock { [unowned self] in self.visible = false }
+        //takes an array of actions, and executes them in order
+        charNode.runAction(SKAction.sequence([delay, hide, notVisible]))
+    }
 }
