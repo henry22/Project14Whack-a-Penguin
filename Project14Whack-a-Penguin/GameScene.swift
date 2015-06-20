@@ -76,7 +76,18 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        //find any touch, find out where it was tapped, then get a node array of all nodes at that point in the scene
+        let nodes = nodesAtPoint(location) as! [SKNode]
         
+        for node in nodes {
+            if node.name == "charFriend" {
+                //they shouldn't have whacked this penguin
+            } else if node.name == "charEnemy" {
+                //they should have whacked this penguin
+            }
+        }
     }
    
     override func update(currentTime: CFTimeInterval) {
