@@ -84,8 +84,32 @@ class GameScene: SKScene {
         for node in nodes {
             if node.name == "charFriend" {
                 //they shouldn't have whacked this penguin
+                
+                //It gets the parent of the parent of the node, and typecasts it as a WhackSlot
+                let whackSlot = node.parent!.parent as! WhackSlot
+                if !whackSlot.visible { continue }
+                if whackSlot.isHit { continue }
+                
+                whackSlot.hit()
+                score -= 5
+                
+                //plays a sound and optionally waits for the sound to finish playing before continuing
+                runAction(SKAction.playSoundFileNamed("whackBad.caf", waitForCompletion: false))
             } else if node.name == "charEnemy" {
                 //they should have whacked this penguin
+                
+                let whackSlot = node.parent!.parent as! WhackSlot
+                if !whackSlot.visible { continue }
+                if whackSlot.isHit { continue }
+                
+                //the penguin visibly shrinks in the scene, as if they had been hit
+                whackSlot.charNode.xScale = 0.85
+                whackSlot.charNode.yScale = 0.85
+                
+                whackSlot.hit()
+                score += 1
+                
+                runAction(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
             }
         }
     }
