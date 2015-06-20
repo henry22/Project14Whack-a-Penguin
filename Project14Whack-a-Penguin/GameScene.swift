@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var numRounds = 0
+    
     var popupTime = 0.85
     
     var slots = [WhackSlot]()
@@ -52,6 +54,24 @@ class GameScene: SKScene {
     }
     
     func createEnemy() {
+        
+        ++numRounds
+        
+        if numRounds >= 30 {
+            //hide all the slot
+            for slot in slots {
+                slot.hide()
+            }
+            
+            //show a "Game over" sprite
+            let gameOver = SKSpriteNode(imageNamed: "gameOver")
+            gameOver.position = CGPoint(x: 512, y: 384)
+            addChild(gameOver)
+            
+            //exit the method
+            return
+        }
+        
         //Decrease popupTime each time it's called
         popupTime *= 0.991
         
